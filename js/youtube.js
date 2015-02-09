@@ -295,6 +295,7 @@ function getTime()
 function getTitle()
 {
 
+    document.getElementsByName('v')[0].placeholder ="Channel Empty. Search Video here to start Channel";
     $.ajax({ type: "GET",   
 		url: "php/timedifference.php",   
 		async: false,
@@ -302,9 +303,12 @@ function getTitle()
 			viewers = $.parseJSON(data);
 			var outPutWord = viewers[5].length > 1 ? "viewers" : "viewer";
 			var title= viewers[4].replace(/\\\'/g, "'").replace(/&quot;/g,"'").replace(/&amp;/g,"&");
+		if(title=='No Video'){
+			document.getElementsByName('v')[0].placeholder ="Channel Empty. Search Video here to start Channel";
+		}else{
 			document.title = title + " • Zöff";
 			document.getElementsByName('v')[0].placeholder = title + " • " + viewers[5].length + " " + outPutWord;
-		}
+		}}
 	});
 
 }
