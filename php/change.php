@@ -10,8 +10,10 @@ else $list=$list[1];
 $list="../lists/".$list.".json";                                   //actually setting the list for the target. Under is the array for an empty list being created
 $array = array("nowPlaying" => array(), "songs" => array(), "conf" => array("startTime" => time(), "views" => array(), "skips" => array()));
 $array = json_encode($array);                                      //encoding the array
-$f = @fopen($list,"x");                                            //opening a file, ignoring warnings
-if($f){ fwrite($f,$array); fclose($f); }                           //if the file doesn't exist, we create a new one, and adds the newly made array there
+$no_video = '{"nowPlaying":{"-YT9tXUXOPo":{"id":"-YT9tXUXOPo","title":"No Video","votes":0,"added":1423335396,"guids":[]}},"conf":{"startTime":1423335640,"views":["OTk4NTY2"],"skips":[]}}'; //Include an empty video intro for the newly created channel just incase no video is added
+$f = @fopen($list,"x"); //opening a file, ignoring warnings
+//if($f){ fwrite($f,$array); fclose($f); } //if the file doesn't exist, we create a new one, and adds the newly made array there
+if($f){ fwrite($f,$no_video); fclose($f); } //Saving no video in new channel 
 $file = file_get_contents($list);                                  //gets the content of the file
 $data = json_decode($file, TRUE);                                  //decoding the file. The true is there for array comprehension in php or something. Don't remove!
 $songs = $data["songs"];                                           //setting the now playing and the next song in the next couplecouple of lines
