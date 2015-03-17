@@ -143,6 +143,7 @@ function search(search_input){
 							$(".main").addClass("blurT");
 							$("#controls").addClass("blurT");
 							$(".main").addClass("clickthrough");
+							$('#results').show()
 						}
 
 						$("<div id='r' style='display:none;'>"+wrapper+"</div>").appendTo('#results').slideDown('slow');
@@ -166,6 +167,18 @@ function submitAndClose(id,title){
 	console.log("sub&closed");
 
 }
+
+$(document).click(function(event) { 
+    if(!$(event.target).closest('#results').length) {
+        if($('#results').is(":visible")) {
+            $('#results').hide()
+			$(".main").removeClass("blurT");
+			$("#controls").removeClass("blurT");
+			$(".main").removeClass("clickthrough");
+			document.getElementById("search").value = '';
+        }
+    }        
+})
 
 function submit(id,title,type){
 
