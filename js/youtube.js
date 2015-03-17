@@ -96,7 +96,7 @@ function onYouTubeIframeAPIReady() {
 		height: window.height*0.75,
 		width: window.width*0.6,
 		videoId: response,
-		playerVars: { rel:"0", wmode:"transparent", controls: "0" , iv_load_policy: "3", theme:"light", color:"white"},
+		playerVars: { rel:"0", wmode:"transparent", controls: "0" , iv_load_policy: "3", theme:"light", color:"white", showinfo:"0"},
 		events: {
 			'onReady': onPlayerReady,
 			'onStateChange': onPlayerStateChange,
